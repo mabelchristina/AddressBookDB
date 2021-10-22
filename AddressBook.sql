@@ -64,3 +64,25 @@ select State,count(State) from Address_Book group by State;
 select * from Address_Book
 where City = 'Koramangala'
 order by FirstName asc;
+
+--UC9
+
+-- Add addressbook name and type columns
+alter table Address_book add addressbook_name varchar(20), type varchar(20)
+
+-- update records for newly added columns
+update address_book set addressbook_name = 'Home',type = 'Family' where FirstName = 'Mabel' or FirstName = 'Nancy'
+update address_book set addressbook_name = 'Home',type = 'Friends' where FirstName = 'Joel' or FirstName = 'Liah' or FirstName = 'Sachin'
+update address_book set addressbook_name = 'Office',type = 'Profession' where FirstName = 'Joe' or FirstName = 'Mabel'
+
+--UC10
+
+select type, COUNT(FirstName) from address_book group by type
+
+--UC11
+
+Insert into address_book values
+('Sam','Victor','1st Block','Indranagar', 'Bangalore','512346','9863224355','sam@gmail.com','Home','Friends')
+Insert into address_book values
+('Sam','Victor','1st Block','Indranagar', 'Bangalore','512346','9863224355','sam@gmail.com','Home','Family')
+
